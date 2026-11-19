@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="mn">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Чулуунчимэгийн төрсөн өдөр · 25</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Great+Vibes&family=Marck+Script&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================
+       1. ӨНГӨ, ЕРӨНХИЙ ТОХИРГОО
+       ========================================================= */
+    :root {
+      --bg-top: #3a2a24;      /* арын бор өнгө (дээд) */
+      --bg-bottom: #2a1d19;   /* арын бор өнгө (доод) */
+      --wine: #5e0f20;        /* дарс хүрэн улаан (бараан) */
+      --wine-light: #7b1a2c;  /* дарс хүрэн улаан (цайвар) */
+      --cream: #f1e2d0;       /* цаасны өнгө */
+      --ink: #5a0e1e;         /* картан дээрх бичгийн өнгө */
+      --gold: #b98a5e;        /* алтлаг хүрээ */
+      --blush: #e9c9c0;       /* гарчгийн цайвар ягаавтар өнгө */
+
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    html {
+      height: 100%;
+      scroll-padding-top: env(safe-area-inset-top, 0px);
+    }
+
+    body {
+      min-height: 100%;
+      background: radial-gradient(ellipse at top, var(--bg-top), var(--bg-bottom));
+      color: var(--cream);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 19px;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .wrap {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 22px 22px 60px;
+    }
+
+
+    /* =========================================================
+       2. ҮСГИЙН ХЭЛБЭР
+       ========================================================= */
+    .script {
+      font-family: "Great Vibes", "Marck Script", cursive;
+      color: var(--wine);
+      line-height: 1;
+    }
+
+    .kicker {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+    }
+
+    h2 {
+      margin-bottom: 12px;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-style: italic;
+      font-size: 36px;
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--blush);
+    }
+
+
+    /* =========================================================
+       3. УРИЛГЫН КАРТ
+       ========================================================= */
+    .card {
+      position: relative;
+      overflow: hidden;
+      padding: 80px 26px 48px;
+      border-radius: 999px 999px 28px 28px;
+      background-color: var(--cream);
+      background-image: radial-gradient(#0000000a 1px, transparent 1px);
+      background-size: 5px 5px;
+      color: var(--ink);
+      box-shadow:
+        0 0 0 10px var(--wine),
+        0 0 0 12px var(--gold),
+        0 24px 50px #0008;
+    }
+
+    .card h1 {
+      margin-top: 6px;
+      font-size: 76px;
+      font-weight: 400;
+    }
+
+    .sub {
+      margin-bottom: 10px;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.35em;
+    }
+
+    .name {
+      margin: 8px 0;
+      font-family: "Marck Script", cursive;
+      font-size: 32px;
+      line-height: 1.15;
+      color: var(--wine);
+    }
+
+    .age {
+      font-family: "Great Vibes", cursive;
+      font-size: 96px;
+      line-height: 0.9;
+      color: var(--wine-light);
+    }
+
+    .closing {
+      margin-top: 8px;
+      font-size: 44px;
+    }
+
+    /* зүрхтэй зураас */
+    .rule {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 75%;
+      margin: 14px auto;
+      color: var(--wine-light);
+    }
+
+    .rule::before,
+    .rule::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--wine-light);
+      opacity: 0.6;
+    }
+
+    /* огноо / цаг / газар */
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin: 18px 0 8px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .meta div + div {
+      border-left: 1px solid #5a0e1e55;
+    }
+
+    .meta small {
+      display: block;
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+
+    /* =========================================================
+       4. ЦЭЦЭГ
+       ========================================================= */
+    .flower {
+      position: absolute;
+      width: 150px;
+    }
+
+    .flower-top-left {
+      top: -18px;
+      left: -34px;
+      transform: rotate(-20deg);
+    }
+
+    .flower-bottom-right {
+      right: -38px;
+      bottom: -34px;
+      width: 170px;
+      transform: rotate(160deg);
+    }
+
+    .flower-bottom-left {
+      bottom: -30px;
+      left: -28px;
+      width: 115px;
+      transform: rotate(25deg);
+    }
+
+
+    /* =========================================================
+       5. ХЭСГҮҮД (тооллого, байршил, хувцасны код)
+       ========================================================= */
+    section {
+      margin-top: 44px;
+    }
+
+    .box {
+      padding: 20px;
+      border: 1px solid #b98a5e66;
+      border-radius: 18px;
+      background: #00000030;
+    }
+
+    .dress-code {
+      font-size: 46px;
+      color: var(--blush);
+    }
+
+    /* тооллого */
+    .count {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .count div {
+      flex: 1;
+      max-width: 90px;
+      padding: 12px 4px;
+      border: 1px solid var(--gold);
+      border-radius: 14px;
+      background: var(--wine);
+    }
+
+    .count b {
+      display: block;
+      font-size: 34px;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .count span {
+      font-size: 14px;
+      opacity: 0.85;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 16px;
+      opacity: 0.7;
+    }
+
+
+    /* =========================================================
+       6. ТОВЧ
+       ========================================================= */
+    .btn {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 11px 22px;
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      background: var(--wine-light);
+      color: var(--cream);
+      font: 600 17px "Cormorant Garamond", serif;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--cream);
+      outline-offset: 3px;
+    }
+
+
+    /* =========================================================
+       7. НЭЭЛТИЙН ДЭЛГЭЦ
+       ========================================================= */
+    #intro {
+      position: fixed;
+      inset: 0;
+      z-index: 9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: radial-gradient(ellipse at center, var(--wine-light), var(--wine) 70%);
+      transition: opacity 0.9s, visibility 0.9s;
+    }
+
+    #intro.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    #intro .script {
+      margin-top: 8px;
+      font-size: 64px;
+      color: var(--cream);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #intro {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================================================
+       ЦЭЦГИЙН ЗУРАГ (нэг удаа зурж, 3 газар давтан ашиглана)
+       ========================================================= -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <radialGradient id="petal-gradient" cx="50%" cy="88%" r="95%">
+        <stop offset="0"    stop-color="#f0c4a8" />
+        <stop offset="0.22" stop-color="#c0566a" />
+        <stop offset="0.6"  stop-color="#8a2236" />
+        <stop offset="1"    stop-color="#4a0b18" />
+      </radialGradient>
+
+      <!-- нэг дэлбээ -->
+      <g id="petal">
+        <path d="M100 102C56 88 50 38 84 14Q100 2 116 14C150 38 144 88 100 102Z"
+              fill="url(#petal-gradient)" stroke="#3d0813" stroke-width="1" />
+        <path d="M100 98L100 26M100 90L78 44M100 90L122 44M100 82L88 34M100 82L112 34"
+              stroke="#f3cdbb" stroke-opacity="0.28" stroke-width="1.2" fill="none" />
+        <circle cx="92"  cy="72" r="1.6" fill="#3d0813" />
+        <circle cx="108" cy="66" r="1.6" fill="#3d0813" />
+        <circle cx="100" cy="80" r="1.4" fill="#3d0813" />
+      </g>
+
+      <!-- бүтэн цэцэг -->
+      <g id="flower">
+        <!-- арын жижиг дэлбээнүүд -->
+        <g transform="translate(100 100) rotate(36) scale(.86) translate(-100 -100)">
+          <use href="#petal" />
+          <use href="#petal" transform="rotate(72 100 100)" />
+          <use href="#petal" transform="rotate(144 100 100)" />
+          <use href="#petal" transform="rotate(216 100 100)" />
+          <use href="#petal" transform="rotate(288 100 100)" />
+        </g>
+
+        <!-- урд талын дэлбээнүүд -->
+        <use href="#petal" />
+        <use href="#petal" transform="rotate(72 100 100)" />
+        <use href="#petal" transform="rotate(144 100 100)" />
+        <use href="#petal" transform="rotate(216 100 100)" />
+        <use href="#petal" transform="rotate(288 100 100)" />
+
+        <!-- төв ба тоосонцор -->
+        <circle cx="100" cy="100" r="12" fill="#f0c4a8" opacity="0.85" />
+        <path d="M100 100Q84 84 76 62M100 100Q96 80 94 56M100 100Q112 80 118 58M100 100Q122 88 130 68M100 100Q108 78 108 52"
+              stroke="#4a0b18" stroke-width="1.6" fill="none" />
+        <g fill="#c9894f" stroke="#4a0b18" stroke-width="0.8">
+          <ellipse cx="76"  cy="60" rx="3.4" ry="7" transform="rotate(-28 76 60)" />
+          <ellipse cx="94"  cy="54" rx="3.4" ry="7" />
+          <ellipse cx="118" cy="56" rx="3.4" ry="7" transform="rotate(14 118 56)" />
+          <ellipse cx="130" cy="66" rx="3.4" ry="7" transform="rotate(26 130 66)" />
+          <ellipse cx="108" cy="50" rx="3.4" ry="7" />
+        </g>
+      </g>
+    </defs>
+  </svg>
+
+
+  <!-- =========================================================
+       НЭЭЛТИЙН ДЭЛГЭЦ
+       ========================================================= -->
+  <div id="intro">
+    <p class="kicker">ТАНД УРИЛГА ИРЛЭЭ</p>
+    <p class="script">Chuluunchimeg</p>
+    <button class="btn" id="open-btn">Урилга нээх</button>
+  </div>
+
+
+  <main class="wrap">
+
+    <!-- =======================================================
+         УРИЛГЫН КАРТ
+         ======================================================= -->
+    <div class="card">
+      <svg class="flower flower-top-left"     viewBox="0 0 200 200"><use href="#flower" /></svg>
+      <svg class="flower flower-bottom-right" viewBox="0 0 200 200"><use href="#flower" /></svg>
+      <svg class="flower flower-bottom-left"  viewBox="0 0 200 200"><use href="#flower" /></svg>
+
+      <p class="kicker">ТАНЫГ УРЬЖ БАЙНА</p>
+      <h1 class="script">Birthday</h1>
+      <p class="sub">CELEBRATION</p>
+
+      <div class="rule">♥</div>
+
+      <p>Нэг нас нэмэх тусам илүү мөрөөдөл,<br>илүү баяр баясгалан, илүү хайр!</p>
+
+      <p class="name">Отгонбаярын Чулуунчимэг</p>
+      <p class="age">25</p>
+      <p>насныхаа төрсөн өдрийг хамт тэмдэглэе</p>
+
+      <!-- Цаг, газар тодорхой болмогц доорх "удахгүй"-г солино -->
+      <div class="meta">
+        <div>2026.11.22<small>Ням гараг</small></div>
+        <div>Цаг<small>удахгүй</small></div>
+        <div>Газар<small>удахгүй</small></div>
+      </div>
+
+      <div class="rule">♥</div>
+
+      <p>Таны ирэх нь миний өдрийг<br>илүү онцгой болгоно.</p>
+      <p class="script closing">Уулзъя!</p>
+    </div>
+
+
+    <!-- =======================================================
+         ТООЛЛОГО
+         ======================================================= -->
+    <section>
+      <h2>Төрсөн өдөр хүртэл</h2>
+      <div class="count">
+        <div><b id="days">0</b><span>өдөр</span></div>
+        <div><b id="hours">0</b><span>цаг</span></div>
+        <div><b id="minutes">0</b><span>минут</span></div>
+        <div><b id="seconds">0</b><span>секунд</span></div>
+      </div>
+    </section>
+
+
+    <!-- =======================================================
+         БАЙРШИЛ
+         ======================================================= -->
+    <section>
+      <h2>Байршил</h2>
+      <div class="box">
+        <p>Газар, цагийг удахгүй мэдэгдэнэ.</p>
+
+        <a class="btn" id="map-btn" target="_blank" rel="noopener" href="#">Google Maps-д харах</a>
+      </div>
+    </section>
+
+
+    <!-- =======================================================
+         ХУВЦАСНЫ КОД
+         ======================================================= -->
+    <section>
+      <h2>Хувцасны код</h2>
+      <div class="box">
+        <p class="script dress-code">Classic</p>
+        <p>Энгийн бөгөөд дэгжин хувцаслалтаар ирээрэй.</p>
+      </div>
+    </section>
+
+    <footer>Чулуунчимэг · 25 · 2026.11.22 ♥</footer>
+  </main>
+
+
+  <script>
+    /* =========================================================
+       ТОХИРГОО — зөвхөн эндээс засахад хангалттай
+       ========================================================= */
+    const CONFIG = {
+      // Төрсөн өдөр: (он, сар - 1, өдөр, цаг, минут, секунд)
+      // Сар 0-ээс эхэлдэг тул 11-р сар = 10
+      birthday: new Date(2026, 10, 22, 0, 0, 0),
+
+      // Google Maps-ийн холбоос
+      mapUrl: "https://maps.app.goo.gl/TsoQAYupXPWvuzyJ7"
+    };
+
+
+    /* =========================================================
+       НЭЭЛТИЙН ДЭЛГЭЦ
+       ========================================================= */
+    document.getElementById("open-btn").onclick = function () {
+      document.getElementById("intro").classList.add("hide");
+    };
+
+
+    /* =========================================================
+       GOOGLE MAPS ТОВЧ
+       ========================================================= */
+    document.getElementById("map-btn").href = CONFIG.mapUrl;
+
+
+    /* =========================================================
+       ТООЛЛОГО
+       ========================================================= */
+    function pad(n) {
+      return String(n).padStart(2, "0");
+    }
+
+    function updateCountdown() {
+      const left = Math.max(0, CONFIG.birthday.getTime() - Date.now());
+
+      document.getElementById("days").textContent    = Math.floor(left / 864e5);
+      document.getElementById("hours").textContent   = pad(Math.floor(left / 36e5) % 24);
+      document.getElementById("minutes").textContent = pad(Math.floor(left / 6e4) % 60);
+      document.getElementById("seconds").textContent = pad(Math.floor(left / 1e3) % 60);
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>
